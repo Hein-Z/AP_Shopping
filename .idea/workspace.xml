@@ -19,6 +19,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/apshop/admin" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -39,7 +40,7 @@
       <option name="presentableId" value="Default" />
       <updated>1600677987062</updated>
       <workItem from="1600677988139" duration="421000" />
-      <workItem from="1600688700352" duration="2491000" />
+      <workItem from="1600688700352" duration="4332000" />
     </task>
     <servers />
   </component>

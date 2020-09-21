@@ -23,7 +23,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <title>Hein'Z blog</title>
 
     <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="dist/css/adminlte.min.css">
     <!-- Google Font: Source Sans Pro -->
@@ -49,7 +49,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="../users_profile/<?php echo  $_SESSION['profile_pic']?>" class=" elevation-2"
+                        <img src="users_profile/<?php echo  $_SESSION['profile_pic']?>" class=" elevation-2"
                             alt="User Image">
                     </div>
                     <div class="info">

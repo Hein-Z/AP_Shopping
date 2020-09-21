@@ -40,7 +40,7 @@
       <option name="presentableId" value="Default" />
       <updated>1600677987062</updated>
       <workItem from="1600677988139" duration="421000" />
-      <workItem from="1600688700352" duration="4332000" />
+      <workItem from="1600688700352" duration="12801000" />
     </task>
     <servers />
   </component>
@@ -48,9 +48,36 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="377" y="199" width="601" height="403" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1600697103236">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="377" y="199" width="601" height="403" key="#com.intellij.fileTypes.FileTypeChooser/0.27.1366.741@0.27.1366.741" timestamp="1600697103236" />
     <state x="757" y="146" width="524" height="509" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1600691022687">
       <screen x="0" y="27" width="1366" height="741" />
     </state>
     <state x="757" y="146" width="524" height="509" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.27.1366.741@0.27.1366.741" timestamp="1600691022687" />
+    <state x="811" y="117" width="529" height="568" key="NewPhpClassDialog" timestamp="1600697854337">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="811" y="117" width="529" height="568" key="NewPhpClassDialog/0.27.1366.741@0.27.1366.741" timestamp="1600697854337" />
+    <state x="478" y="323" width="399" height="156" key="NewPhpFileDialog" timestamp="1600701436579">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="478" y="323" width="399" height="156" key="NewPhpFileDialog/0.27.1366.741@0.27.1366.741" timestamp="1600701436579" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php-line-method">
+          <url>file://$PROJECT_DIR$/shop/authentication.php</url>
+          <line>5</line>
+          <properties>
+            <option name="className" value="\authentication" />
+            <option name="methodName" value="login" />
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

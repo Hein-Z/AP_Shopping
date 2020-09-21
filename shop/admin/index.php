@@ -1,15 +1,8 @@
 <?php
-session_start();
 
-require '../config/config.php';
-include '../config/common.php';
 
-if(empty($_SESSION['user_id']) && empty( $_SESSION['logged_in'])){
-header('location:login.php');
-}
-if($_SESSION['role']==0){
-    header('location:login.php');
-    }
+
+
 
 if(isset($_POST['search'])) {
      setcookie('search',$_POST['search'], time() + (86400 * 30), "/");
@@ -32,11 +25,11 @@ if(isset($_POST['search'])) {
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">Home page</h1>
+                    <h1 class="m-0 text-dark"><b>AP Shop</b> Admin Panel</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item"><a href="logout.php">Logout</a></li>
 
                     </ol>
                 </div><!-- /.col -->
@@ -48,6 +41,7 @@ if(isset($_POST['search'])) {
                 <path fill-rule="evenodd"
                     d="M12 1H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2zM8.5 6a.5.5 0 0 0-1 0v1.5H6a.5.5 0 0 0 0 1h1.5V10a.5.5 0 0 0 1 0V8.5H10a.5.5 0 0 0 0-1H8.5V6z" />
             </svg> New Blog Post</a>
+
 
     </div>
     <?php

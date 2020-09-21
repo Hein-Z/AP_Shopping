@@ -2,31 +2,11 @@
 session_start();
 require '../config/config.php';
 require '../config/common.php';
+require '../authentication.php';
 
+$authenticate=new Authentication();
+$authenticate->login($_POST,$pdo);
 
-if($_POST){
-$email=$_POST['email'];
-$password=$_POST['password'];
-$stmt=$pdo->prepare("SELECT * FROM users WHERE email=:email");
-$stmt->bindValue(':email',$email);
-$stmt->execute();
-$user=$stmt->fetch(PDO::FETCH_ASSOC);
-if($user){
-    if($user['password']==$password){
-        $_SESSION['user_id']=$user['id'];
-        $_SESSION['logged_in']=time();
-        $_SESSION['user_name']=$user['name'];
-        $_SESSION['profile_pic']=$user['profile_pic'];
-        $_SESSION['role']=$user['role'];
-        header('location: index.php');
-        // print_r($_SESSION);
-    }
-}
-    echo '<script>
-    alert("incorrect Email or Password");</script>';
- 
-
-}
 ?>
 
 <!DOCTYPE html>
@@ -54,7 +34,7 @@ if($user){
 <body class="hold-transition login-page">
     <div class="login-box">
         <div class="login-logo">
-            <a href="index2.html"><b>Admin</b>LTE</a>
+            <h1 class="m-0 text-dark "><b>AP Shop</b><br> Admin Panel</h1>
         </div>
         <!-- /.login-logo -->
         <div class="card">

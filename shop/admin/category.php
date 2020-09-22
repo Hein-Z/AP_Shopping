@@ -1,5 +1,6 @@
 <?php
 
+
 if (isset($_POST['search'])) {
     setcookie('search', $_POST['search'], time() + (86400 * 30), "/");
 } else {
@@ -8,11 +9,18 @@ if (isset($_POST['search'])) {
         setcookie('search', null, -1, '/');
     }
 }
+include('header.php');
+include('CatManagement.php');
+$catManagement = new CatManagement();
 
-
+$result=$catManagement->show($_POST,$pdo);
+$total_page=$result[0];
+$categories=$result[1];
+$page_no=$result[2];
+$offset=$result[3];
 ?>
 
-<?php include('header.php'); ?>
+
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
 
@@ -42,44 +50,7 @@ if (isset($_POST['search'])) {
 
 
         </div>
-        <?php
 
-        if (!empty($_GET['page_no'])) {
-            $page_no = $_GET['page_no'];
-        } else {
-            $page_no = 1;
-        }
-        $num_of_regs = 3;
-        $offset = ($page_no - 1) * $num_of_regs;
-
-
-        if (empty($_POST['search']) && !isset($_COOKIE['search'])) {
-
-            $stmt = $pdo->prepare("SELECT * FROM categories ORDER BY id DESC");
-
-            $stmt->execute();
-            $raw_result = $stmt->fetchAll();
-            $total_page = ceil(count($raw_result) / $num_of_regs);
-
-            $stmt = $pdo->prepare("SELECT * FROM categories ORDER BY id DESC LIMIT $offset, $num_of_regs");
-
-            $stmt->execute();
-            $categories = $stmt->fetchAll();
-        } else {
-            $search_key = isset($_POST['search']) ? $_POST['search'] : $_COOKIE['search'];
-
-            $stmt = $pdo->prepare("SELECT * FROM categories WHERE name LIKE '%$search_key%'  ORDER BY id DESC");
-
-            $stmt->execute();
-            $raw_result = $stmt->fetchAll();
-            $total_page = ceil(count($raw_result) / $num_of_regs);
-
-            $stmt = $pdo->prepare("SELECT * FROM categories WHERE name LIKE '%$search_key%' ORDER BY id DESC LIMIT $offset, $num_of_regs");
-
-            $stmt->execute();
-            $categories = $stmt->fetchAll();
-        }
-        ?>
         <!-- Main content -->
         <?php if (count($categories)) { ?>
             <div class="card-body">
@@ -201,3 +172,6 @@ if (isset($_POST['search'])) {
     </div>
     <!-- /.content-wrapper -->
 <?php include('footer.html'); ?>
+
+
+

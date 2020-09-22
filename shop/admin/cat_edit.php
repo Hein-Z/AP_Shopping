@@ -2,7 +2,9 @@
 include('header.php');
 include('CatManagement.php');
 $catManagement = new CatManagement();
-$catManagement->edit($_POST, $pdo);
+$catManagement->update($_POST, $pdo);
+$catManagement->show($_POST,$pdo);
+
 ?>
 
     <div class="content-wrapper pl-3">

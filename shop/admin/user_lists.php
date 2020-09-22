@@ -1,5 +1,5 @@
 <?php
-
+require ('UserManagement.php');
 if (isset($_POST['search'])) {
     setcookie('search', $_POST['search'], time() + (86400 * 30), "/");
 } else {
@@ -43,42 +43,12 @@ if (isset($_POST['search'])) {
 
         </div>
         <?php
-
-        if (!empty($_GET['page_no'])) {
-            $page_no = $_GET['page_no'];
-        } else {
-            $page_no = 1;
-        }
-        $num_of_regs = 3;
-        $offset = ($page_no - 1) * $num_of_regs;
-
-
-        if (empty($_POST['search']) && !isset($_COOKIE['search'])) {
-
-            $stmt = $pdo->prepare("SELECT * FROM users ORDER BY id DESC");
-
-            $stmt->execute();
-            $raw_result = $stmt->fetchAll();
-            $total_page = ceil(count($raw_result) / $num_of_regs);
-
-            $stmt = $pdo->prepare("SELECT * FROM users ORDER BY id DESC LIMIT $offset, $num_of_regs");
-
-            $stmt->execute();
-            $users = $stmt->fetchAll();
-        } else {
-            $search_key = isset($_POST['search']) ? $_POST['search'] : $_COOKIE['search'];
-
-            $stmt = $pdo->prepare("SELECT * FROM users WHERE name LIKE '%$search_key%'  ORDER BY id DESC");
-
-            $stmt->execute();
-            $raw_result = $stmt->fetchAll();
-            $total_page = ceil(count($raw_result) / $num_of_regs);
-
-            $stmt = $pdo->prepare("SELECT * FROM users WHERE name LIKE '%$search_key%' ORDER BY id DESC LIMIT $offset, $num_of_regs");
-
-            $stmt->execute();
-            $users = $stmt->fetchAll();
-        }
+        $userManagement = new UserManagement();
+        $result=$userManagement->show($_POST, $pdo);
+        $total_page=$result[0];
+        $users=$result[1];
+        $page_no=$result[2];
+        $offset=$result[3];
         ?>
         <!-- Main content -->
         <?php if (count($users)) { ?>

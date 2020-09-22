@@ -22,18 +22,8 @@
     <list default="true" id="b6a7a07d-f885-4821-91d1-f8280b8b0df7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shop/admin/UserManagement.php" beforeDir="false" afterPath="$PROJECT_DIR$/shop/admin/UserManagement.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/admin/cat_edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/shop/admin/cat_edit.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/admin/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/shop/admin/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/admin/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/shop/admin/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/admin/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/shop/admin/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/admin/logout.php" beforeDir="false" afterPath="$PROJECT_DIR$/shop/admin/logout.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/admin/user_add.php" beforeDir="false" afterPath="$PROJECT_DIR$/shop/admin/user_add.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/admin/user_delete.php" beforeDir="false" afterPath="$PROJECT_DIR$/shop/admin/user_delete.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shop/admin/user_edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/shop/admin/user_edit.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shop/admin/user_lists.php" beforeDir="false" afterPath="$PROJECT_DIR$/shop/admin/user_lists.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/authentication.php" beforeDir="false" afterPath="$PROJECT_DIR$/shop/authentication.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/config/common.php" beforeDir="false" afterPath="$PROJECT_DIR$/shop/config/common.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/config/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/shop/config/config.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +69,7 @@
       <workItem from="1600677988139" duration="421000" />
       <workItem from="1600688700352" duration="12801000" />
       <workItem from="1600703835653" duration="2951000" />
-      <workItem from="1600764999186" duration="3093000" />
+      <workItem from="1600764999186" duration="4234000" />
     </task>
     <servers />
   </component>

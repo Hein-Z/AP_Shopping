@@ -8,6 +8,23 @@ class CatManagement
             $name=$data['name'];
             $description=$data['description'];
 
+            $stmt = $pdo->prepare("SELECT * FROM categories WHERE name=:name and id!=:id");
+            $stmt->execute(array(':name' => $name,':id'=>$_GET['id']));
+            $result = $stmt->fetch();
+
+
+
+
+            if (!empty($result)) {
+                $error['name']='This category already exist!';
+            }
+            if(empty($name)){
+                $error['name']='Name is required';
+            }
+            if(empty($description)){
+                $error['description']='Description is required';
+            }
+
             if(!empty($name) && !empty($description)){
                     $stmt=$pdo->prepare('UPDATE categories SET name=:name, description=:description WHERE id=:id');
                     $result=$stmt->execute(array(':name'=>$name,':description'=>$description,':id'=> $_GET['id'] ));
@@ -19,16 +36,34 @@ class CatManagement
                     echo '<script>alert("cannot edited");</script>';
                 }
             }else{
-                echo '<script>alert("You Must Fill The Form!");</script>';
+                return $error;
             }
         }
 
     }
     public function add($data,$pdo){
         if($data){
+            $name=$data['name'];
+            $description=$data['description'];
 
-                $name=$data['name'];
-                $description=$data['description'];
+            $stmt = $pdo->prepare("SELECT * FROM categories WHERE name=:name");
+            $stmt->execute(array(':name' => $name));
+            $result = $stmt->fetch();
+
+
+
+            if (!empty($result)) {
+                $error['name']='This category already exist!';
+            }
+            if(empty($name)){
+                $error['name']='please fill the name';
+            }
+            if(empty($description)){
+                $error['description']='please fill the description';
+            }
+
+
+
                 if(!empty($name)&& !empty($description)){
 
                     $stmt=$pdo->prepare('INSERT INTO categories(name,description) VALUE (:name,:description)');
@@ -40,7 +75,7 @@ class CatManagement
 
                     }
                 }else{
-                    echo '<script>alert("cannot add");</script>';
+                    return $error;
                 }
             }
 

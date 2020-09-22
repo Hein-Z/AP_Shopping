@@ -20,9 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b6a7a07d-f885-4821-91d1-f8280b8b0df7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/shop/admin/ProductsManagement.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shop/admin/product_img/ad.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shop/admin/product_img/old_school.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/admin/CatManagement.php" beforeDir="false" afterPath="$PROJECT_DIR$/shop/admin/CatManagement.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/admin/cat_edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/shop/admin/cat_edit.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/admin/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/shop/admin/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/admin/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/shop/admin/index.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,17 +47,18 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/apshop/admin" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/shop/admin/product_img" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/apshop/admin" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/shop/admin/product_img" />
       <recent name="$PROJECT_DIR$/apshop/admin" />
       <recent name="$PROJECT_DIR$/apshop" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/apshop/admin" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -68,7 +72,7 @@
       <workItem from="1600677988139" duration="421000" />
       <workItem from="1600688700352" duration="12801000" />
       <workItem from="1600703835653" duration="2951000" />
-      <workItem from="1600764999186" duration="5857000" />
+      <workItem from="1600764999186" duration="9686000" />
     </task>
     <servers />
   </component>
@@ -96,10 +100,10 @@
       <screen x="0" y="27" width="1366" height="741" />
     </state>
     <state x="757" y="146" width="524" height="509" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.27.1366.741@0.27.1366.741" timestamp="1600691022687" />
-    <state x="811" y="117" width="529" height="568" key="NewPhpClassDialog" timestamp="1600704515165">
+    <state x="811" y="117" width="529" height="568" key="NewPhpClassDialog" timestamp="1600772371514">
       <screen x="0" y="27" width="1366" height="741" />
     </state>
-    <state x="811" y="117" width="529" height="568" key="NewPhpClassDialog/0.27.1366.741@0.27.1366.741" timestamp="1600704515165" />
+    <state x="811" y="117" width="529" height="568" key="NewPhpClassDialog/0.27.1366.741@0.27.1366.741" timestamp="1600772371514" />
     <state x="478" y="323" width="399" height="156" key="NewPhpFileDialog" timestamp="1600705132121">
       <screen x="0" y="27" width="1366" height="741" />
     </state>

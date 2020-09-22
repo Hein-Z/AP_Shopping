@@ -1,6 +1,5 @@
 <?php
 
-
 if(isset($_POST['search'])) {
      setcookie('search',$_POST['search'], time() + (86400 * 30), "/");
     }else{
@@ -10,10 +9,19 @@ if(isset($_POST['search'])) {
         }
     }
 
-  
+include('header.php');
+include('ProductsManagement.php');
+$productsManagement = new ProductsManagement();
+
+$result=$productsManagement->show($_POST,$pdo);
+$total_page=$result[0];
+$products=$result[1];
+$page_no=$result[2];
+$offset=$result[3];
+
 ?>
 
-<?php include('header.php'); ?>
+
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
 
@@ -41,70 +49,50 @@ if(isset($_POST['search'])) {
 
 
     </div>
-    <?php
-    
-if(!empty($_GET['page_no'])){
-        $page_no=$_GET['page_no'];
-    }
-    else{
-        $page_no=1;
-    }
-    $num_of_regs=3;
-    $offset=($page_no - 1)*$num_of_regs;
 
-    
-    
-    if (empty($_POST['search']) && !isset($_COOKIE['search'])){
-  
-            $stmt=$pdo->prepare("SELECT * FROM products  ORDER BY id DESC");
-           
-            $stmt->execute();
-            $raw_result=$stmt->fetchAll();
-            $total_page=ceil(count($raw_result)/$num_of_regs);
-
-            $stmt=$pdo->prepare("SELECT * FROM posts  ORDER BY id DESC LIMIT $offset, $num_of_regs");
-           
-            $stmt->execute();
-            $posts=$stmt->fetchAll();}
-            else{
-                $search_key =isset($_POST['search']) ? $_POST['search'] : $_COOKIE['search'];
-               
-                $stmt=$pdo->prepare("SELECT * FROM posts WHERE title LIKE '%$search_key%'  ORDER BY id DESC");
-           
-            $stmt->execute();
-            $raw_result=$stmt->fetchAll();
-            $total_page=ceil(count($raw_result)/$num_of_regs);
-
-            $stmt=$pdo->prepare("SELECT * FROM posts WHERE title LIKE '%$search_key%' ORDER BY id DESC LIMIT $offset, $num_of_regs");
-           
-            $stmt->execute();
-            $posts=$stmt->fetchAll();
-            }
-            ?>
     <!-- Main content -->
-    <?php if(count($posts)){ ?>
+    <?php if(count($products)){ ?>
     <div class="card-body">
         <table class="table table-bordered">
             <thead>
                 <tr>
                     <th style="width: 10px">#</th>
-                    <th>Title</th>
-                    <th>Content</th>
+                    <th>name</th>
+                    <th>tag</th>
+                    <th>quantity</th>
+                    <th>price</th>
+                    <th style="width: 120px">image</th>
                     <th style="width: 120px">Control</th>
                 </tr>
             </thead>
             <tbody>
                 <?php $id=0;
                
-                foreach($posts as $post){ $id++;?>
+                foreach($products as $product){ $id++;?>
                 <tr>
                     <td><?php echo $id;?></td>
-                    <td><?php echo escape($post['title']);  ?></td>
+                    <td><?php echo escape($product['name']);  ?></td>
+                    <?php
+                    $stmt = $pdo->prepare("SELECT name FROM categories WHERE id=:id");
+                    $stmt->execute(array(':id'=>$product['category_id']));
+                    $category = $stmt->fetch();
+                    ?>
                     <td>
-                        <?php echo substr(escape($post['content']),0,125).'...'; ?>
+                        <?php echo escape($category[0]); ?>
                     </td>
                     <td>
-                        <a href='edit.php?id=<?php echo $post['id'];?>' class="btn btn-primary btn-sm mb-1 w-100">
+                        <?php echo escape($product['quantity']); ?>
+                    </td>
+                    <td>
+                        <?php echo escape($product['price']); ?>
+                    </td>
+
+                    <td>
+                        <img src="product_img\<?php echo escape($product['image']); ?>" width="100px" alt="">
+
+                    </td>
+                    <td>
+                        <a href='edit.php?id=<?php echo $product['id'];?>' class="btn btn-primary btn-sm mb-1 w-100">
                             <svg width="1.3em" height="1.3em" viewBox="0 0 16 16" class="bi bi-pencil-square mr-1 mb-1"
                                 fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -112,7 +100,7 @@ if(!empty($_GET['page_no'])){
                                 <path fill-rule="evenodd"
                                     d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
                             </svg> Edit</a>
-                        <a href='delete.php?id=<?php echo $post['id']; ?>'
+                        <a href='delete.php?id=<?php echo $product['id']; ?>'
                             onclick="return confirm('Are you sure you want to delete this item?');"
                             class="btn btn-outline-warning btn-sm w-100 text-bold"><svg width="1.3em" height="1.3em"
                                 viewBox="0 0 16 16" class="bi bi-trash mr-1 mb-1" fill="currentColor"
@@ -171,3 +159,5 @@ if(!empty($_GET['page_no'])){
 </div>
 <!-- /.content-wrapper -->
 <?php include('footer.html');?>
+
+

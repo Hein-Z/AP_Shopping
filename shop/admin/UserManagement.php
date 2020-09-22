@@ -15,15 +15,33 @@ class UserManagement
             $result = $stmt->fetch();
 
 
-            if (!empty($result)) {
-                return "Email already exist!";
-            }
-
             $name = $data['name'];
             $email = $data['email'];
             $address = $data['address'];
             $phone = $data['phone'];
             $password = $data['password'];
+
+
+            if (!empty($result)) {
+                $error['email']='Email already exit!';
+            }
+            if(empty($name)){
+                $error['name']='Name cannot be blank';
+            }
+            if(empty($email)){
+                $error['email']='Email cannot be blank';
+            }
+            if(empty($address)){
+                $error['address']='Address cannot be blank';
+            }
+            if(empty($phone)){
+                $error['phone']='Phone number cannot be blank';
+            }
+            if(empty($password)){
+                $error['password']='Password cannot be blank';
+            }
+
+
 
             if (!empty($name) && !empty($email) && !empty($phone) && !empty($password) && !empty($address)) {
                 $stmt = $pdo->prepare('UPDATE users SET name=:name, email=:email, address =:address, phone=:phone, password=:password WHERE id=:id');
@@ -36,7 +54,7 @@ class UserManagement
                     echo '<script>alert("cannot edited");</script>';
                 }
             } else {
-                echo '<script>alert("You Must Fill The Form!");</script>';
+                return $error;
             }
         }
 
@@ -52,17 +70,33 @@ class UserManagement
             $stmt->execute(array(':email' => $data['email']));
             $result = $stmt->fetch();
 
-
-            if (!empty($result)) {
-                return "Cannot add.Email already exist!";
-            }
-
             $name = $data['name'];
             $email = $data['email'];
             $address = $data['address'];
             $phone = $data['phone'];
             $password = $data['password'];
             $role = 2;
+
+            if (!empty($result)) {
+                $error['email']='This email already exist!';
+            }
+            if(empty($name)){
+                $error['name']='please fill the name';
+            }
+            if(empty($email)){
+                $error['email']='please fill the email';
+            }
+            if(empty($address)){
+                $error['address']='please fill the address';
+            }
+            if(empty($phone)){
+                $error['phone']='please fill the phone number';
+            }
+            if(empty($password)){
+                $error['password']='please fill the password';
+            }
+
+
             if (!empty($name) && !empty($email) && !empty($address) && !empty($phone) && !empty($password)) {
 
                 $stmt = $pdo->prepare('INSERT INTO users(name,email,address,phone,password,role) VALUE (:name,:email,:address,:phone,:password,:role)');
@@ -74,7 +108,7 @@ class UserManagement
 
                 }
             } else {
-                echo '<script>alert("cannot add");</script>';
+                return $error;
             }
         }
 

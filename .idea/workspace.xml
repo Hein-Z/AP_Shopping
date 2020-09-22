@@ -20,12 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b6a7a07d-f885-4821-91d1-f8280b8b0df7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/shop/admin/ProductsManagement.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shop/admin/product_img/ad.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shop/admin/product_img/old_school.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/admin/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/shop/admin/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/admin/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/shop/admin/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/admin/UserManagement.php" beforeDir="false" afterPath="$PROJECT_DIR$/shop/admin/UserManagement.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/admin/user_add.php" beforeDir="false" afterPath="$PROJECT_DIR$/shop/admin/user_add.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/admin/user_edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/shop/admin/user_edit.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/admin/user_lists.php" beforeDir="false" afterPath="$PROJECT_DIR$/shop/admin/user_lists.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +71,8 @@
       <workItem from="1600677988139" duration="421000" />
       <workItem from="1600688700352" duration="12801000" />
       <workItem from="1600703835653" duration="2951000" />
-      <workItem from="1600764999186" duration="9686000" />
+      <workItem from="1600764999186" duration="10536000" />
+      <workItem from="1600792127959" duration="2978000" />
     </task>
     <servers />
   </component>
@@ -108,6 +108,10 @@
       <screen x="0" y="27" width="1366" height="741" />
     </state>
     <state x="478" y="323" width="399" height="156" key="NewPhpFileDialog/0.27.1366.741@0.27.1366.741" timestamp="1600705132121" />
+    <state x="347" y="174" key="run.anything.popup" timestamp="1600793823579">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="347" y="174" key="run.anything.popup/0.27.1366.741@0.27.1366.741" timestamp="1600793823579" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -45,6 +45,7 @@ if (isset($_POST['search'])) {
         <?php
         $userManagement = new UserManagement();
         $result=$userManagement->show($_POST, $pdo);
+
         $total_page=$result[0];
         $users=$result[1];
         $page_no=$result[2];

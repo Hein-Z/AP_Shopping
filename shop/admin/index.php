@@ -58,8 +58,8 @@ $offset=$result[3];
                 <tr>
                     <th style="width: 10px">#</th>
                     <th>name</th>
-                    <th>tag</th>
-                    <th>quantity</th>
+                    <th>Category</th>
+                    <th>In Stock</th>
                     <th>price</th>
                     <th style="width: 120px">image</th>
                     <th style="width: 120px">Control</th>
@@ -75,10 +75,10 @@ $offset=$result[3];
                     <?php
                     $stmt = $pdo->prepare("SELECT name FROM categories WHERE id=:id");
                     $stmt->execute(array(':id'=>$product['category_id']));
-                    $category = $stmt->fetch();
+                    $category = $stmt->fetchAll();
                     ?>
                     <td>
-                        <?php echo escape($category[0]); ?>
+                        <?php echo empty($category)?'uncategorized':escape($category[0]); ?>
                     </td>
                     <td>
                         <?php echo escape($product['quantity']); ?>

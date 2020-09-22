@@ -25,8 +25,6 @@ class Authentication
             }
             echo '<script>
     alert("incorrect Email or Password");</script>';
-
-
         }
     }
     public function logout(){

@@ -6,7 +6,6 @@ require '../authentication.php';
 
 $authenticate=new Authentication();
 $authenticate->login($_POST,$pdo);
-
 ?>
 
 <!DOCTYPE html>

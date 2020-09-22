@@ -11,5 +11,4 @@ PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
         MYSQL_USER,MYSQL_PASSWORD,
         $pdoOptions
     );
-    
 ?>

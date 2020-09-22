@@ -7,7 +7,7 @@ $catManagement->edit($_POST, $pdo);
 
     <div class="content-wrapper pl-3">
         <h1>Edit Category</h1>
-        <form action='cat_edit.php' method="post">
+        <form action='' method="post">
             <input type="hidden" name='_token' value='<?php echo $_SESSION["_token"];?>'>
             <div class="form-group">
                 <label for="exampleInputEmail1">Name</label>

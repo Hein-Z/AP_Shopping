@@ -59,7 +59,7 @@ if(!empty($_GET['page_no'])){
     
     if (empty($_POST['search']) && !isset($_COOKIE['search'])){
   
-            $stmt=$pdo->prepare("SELECT * FROM posts  ORDER BY id DESC");
+            $stmt=$pdo->prepare("SELECT * FROM products  ORDER BY id DESC");
            
             $stmt->execute();
             $raw_result=$stmt->fetchAll();

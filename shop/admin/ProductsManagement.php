@@ -31,7 +31,6 @@ class ProductsManagement
             $search_key = isset($data['search']) ? $data['search'] : $_COOKIE['search'];
 
             $stmt = $pdo->prepare("SELECT * FROM products WHERE name LIKE '%$search_key%'  ORDER BY id DESC");
-
             $stmt->execute();
             $raw_result = $stmt->fetchAll();
             $total_page = ceil(count($raw_result) / $num_of_regs);

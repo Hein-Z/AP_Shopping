@@ -37,6 +37,9 @@ $user=$userManagement->edit($pdo);
                 <input type="number" name="phone" class="form-control" placeholder="Enter Phone" value="<? echo $user['phone'];?>" required>
                 <small class="text-danger"> * <?php echo isset($error['phone'])?$error['phone']:'';?> </small>
             </div>
+
+            <p>* fields are required</p>
+
             <button type="submit" class="btn btn-primary">Submit</button>
             <a type="button" class="btn btn-outline-warning" href="user_lists.php">Back</a>
 

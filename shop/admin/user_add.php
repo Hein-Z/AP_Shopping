@@ -36,7 +36,7 @@ $error=$userMangement->add($_POST, $pdo);
                  <small class="text-danger"> * <?php echo isset($error['phone'])?$error['phone']:'';?> </small>
             </div>
 
-            <h5 class="text-primary">* field required!</h5>
+            <p class="text-primary">* fields are required!</p>
 
             <button type="submit" class="btn btn-primary">Submit</button>
             <a href="user_lists.php.php" type="button" class="btn btn-outline-warning">Back</a>

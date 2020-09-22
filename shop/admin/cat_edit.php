@@ -3,7 +3,7 @@ include('header.php');
 include('CatManagement.php');
 $catManagement = new CatManagement();
 $catManagement->update($_POST, $pdo);
-$catManagement->show($_POST,$pdo);
+$categories =$catManagement->edit($pdo);
 
 ?>
 
@@ -13,12 +13,13 @@ $catManagement->show($_POST,$pdo);
             <input type="hidden" name='_token' value='<?php echo $_SESSION["_token"];?>'>
             <div class="form-group">
                 <label for="exampleInputEmail1">Name</label>
-                <input type="name" name="name" class="form-control" placeholder="Enter Name">
+                <input type="name" name="name" class="form-control" placeholder="Enter Name" value="<?php echo $categories['name']?>">
 
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Description</label>
-                <input type="description" name="description" class="form-control" id placeholder="Enter Description">
+
+                <textarea name="description" class="form-control" cols="30" rows="10"><?php echo $categories['description']?></textarea>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>

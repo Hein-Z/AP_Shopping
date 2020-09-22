@@ -101,5 +101,11 @@ class CatManagement
         }
         return [$total_page, $categories,$page_no,$offset];
     }
+    public function edit($pdo){
+        $stmt = $pdo->prepare("SELECT * FROM categories WHERE id=:id");
 
+        $stmt->execute(array(':id'=>$_GET['id']));
+        $categories = $stmt->fetch();
+        return $categories;
+    }
 }

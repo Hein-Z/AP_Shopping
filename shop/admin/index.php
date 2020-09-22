@@ -1,9 +1,6 @@
 <?php
 
 
-
-
-
 if(isset($_POST['search'])) {
      setcookie('search',$_POST['search'], time() + (86400 * 30), "/");
     }else{

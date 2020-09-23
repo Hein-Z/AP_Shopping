@@ -11,8 +11,10 @@ if(empty($_SESSION['user_id']) && empty( $_SESSION['logged_in'])){
     $link=$_SERVER['PHP_SELF'];
     $link_array=explode('/',$link);
     $page=end($link_array);
-    
-    ?>
+if (!empty($_POST['search']) || isset($_COOKIE['search']))
+    $search_key = isset($_POST['search']) ? $_POST['search'] : $_COOKIE['search'];
+
+?>
 <!DOCTYPE html>
 <!--
 This is a starter template page. Use this page to start your new project from
@@ -123,7 +125,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </div>
                 </div>
             </form>
-
-
+            <ul>
+               <li class="nav-item d-none d-sm-inline-block"><?php echo isset($search_key) ? 'Search result for "'.$search_key.'"':''; ?></li>
+            </ul>
         </nav>
         <!-- /.navbar -->

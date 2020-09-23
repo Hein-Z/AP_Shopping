@@ -41,7 +41,7 @@ $categories = $stmt->fetchAll();
 
                 <label for="category">Category:</label>
 
-                <select name="category_id" name="category_id">
+                <select name="category_id">
                     <?php
                     foreach ($categories as $category){
                     if($_POST['category_id']===$category['id']){?>

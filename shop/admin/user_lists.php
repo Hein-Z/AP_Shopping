@@ -62,6 +62,7 @@ if (isset($_POST['search'])) {
                         <th>Email</th>
                         <th>Address</th>
                         <th>Phone</th>
+                        <th>Role</th>
 
                         <th style="width: 120px">Action</th>
                     </tr>
@@ -69,22 +70,25 @@ if (isset($_POST['search'])) {
                     <tbody>
                     <?php $id = 0;
 
-                    foreach ($users as $post) {
+                    foreach ($users as $user) {
                         $id++; ?>
                         <tr>
                             <td><?php echo $id+$offset ; ?></td>
-                            <td><?php echo escape($post['name']); ?></td>
+                            <td><?php echo escape($user['name']); ?></td>
                             <td>
-                                <?php echo escape($post['email']); ?>
+                                <?php echo escape($user['email']); ?>
                             </td>
                             <td>
-                                <?php echo escape($post['address']); ?>
+                                <?php echo escape($user['address']); ?>
                             </td>
                             <td>
-                                <?php echo escape($post['phone']); ?>
+                                <?php echo escape($user['phone']); ?>
                             </td>
                             <td>
-                                <a href='user_edit.php?id=<?php echo $post['id']; ?>'
+                                <?php echo $user['role']==0?'customer':'admin'; ?>
+                            </td>
+                            <td>
+                                <a href='user_edit.php?id=<?php echo $user['id']; ?>'
                                    class="btn btn-primary btn-sm mb-1 w-100">
                                     <svg width="1.3em" height="1.3em" viewBox="0 0 16 16"
                                          class="bi bi-pencil-square mr-1 mb-1"
@@ -95,7 +99,7 @@ if (isset($_POST['search'])) {
                                               d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
                                     </svg>
                                     Edit</a>
-                                <a href='user_delete.php?id=<?php echo $post['id']; ?>'
+                                <a href='user_delete.php?id=<?php echo $user['id']; ?>'
                                    onclick="return confirm('Are you sure you want to delete this item?');"
                                    class="btn btn-outline-warning btn-sm w-100 text-bold">
                                     <svg width="1.3em" height="1.3em"

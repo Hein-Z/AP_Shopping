@@ -3,7 +3,13 @@
 
 class UserManagement
 {
+    public function edit($pdo){
+        $stmt = $pdo->prepare("SELECT * FROM users WHERE id=:id");
 
+        $stmt->execute(array(':id' => $_GET['id']));
+        $user = $stmt->fetch();
+        return $user;
+    }
 
     public function update($data, $pdo)
     {
@@ -20,6 +26,7 @@ class UserManagement
             $address = $data['address'];
             $phone = $data['phone'];
             $password = $data['password'];
+            $role=$data['role'];
 
 
             if (!empty($result)) {
@@ -40,12 +47,17 @@ class UserManagement
             if(empty($password)){
                 $error['password']='Password cannot be blank';
             }
+            if(empty($role)){
+                $error['role']='please fill the role';
+            }elseif (is_numeric($data['role']) != 1) {
+                $error['role'] = 'role value should be number';
+            }
 
 
 
             if (!empty($name) && !empty($email) && !empty($phone) && !empty($password) && !empty($address)) {
-                $stmt = $pdo->prepare('UPDATE users SET name=:name, email=:email, address =:address, phone=:phone, password=:password WHERE id=:id');
-                $result = $stmt->execute(array(':name' => $name, ':email' => $email, ':address' => $address, ':phone' => $phone, ':password' => $password, ':id' => $_GET['id']));
+                $stmt = $pdo->prepare('UPDATE users SET name=:name, email=:email, address =:address, phone=:phone, password=:password,role=:role WHERE id=:id');
+                $result = $stmt->execute(array(':name' => $name, ':email' => $email, ':address' => $address, ':phone' => $phone, ':password' => $password,':role'=>$role, ':id' => $_GET['id']));
 
                 if (isset($result)) {
                     echo '<script>alert("successfully edited");window.location.href="user_lists.php";</script>';
@@ -75,7 +87,8 @@ class UserManagement
             $address = $data['address'];
             $phone = $data['phone'];
             $password = $data['password'];
-            $role = 2;
+            $role=$data['role'];
+
 
             if (!empty($result)) {
                 $error['email']='This email already exist!';
@@ -94,6 +107,11 @@ class UserManagement
             }
             if(empty($password)){
                 $error['password']='please fill the password';
+            }
+            if(empty($role)){
+                $error['role']='please fill the role';
+            }elseif (is_numeric($data['role']) != 1) {
+                $error['role'] = 'role value should be number';
             }
 
 
@@ -175,12 +193,6 @@ class UserManagement
         return [$total_page, $users,$page_no,$offset];
     }
 
-    public function edit($pdo){
-        $stmt = $pdo->prepare("SELECT * FROM users WHERE id=:id");
 
-        $stmt->execute(array(':id'=>$_GET['id']));
-        $user = $stmt->fetch();
-        return $user;
-    }
 }
 

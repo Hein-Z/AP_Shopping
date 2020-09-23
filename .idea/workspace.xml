@@ -20,10 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b6a7a07d-f885-4821-91d1-f8280b8b0df7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/shop/admin/product_delete.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shop/admin/product_img/1600862441980pro.0.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shop/admin/ProductsManagement.php" beforeDir="false" afterPath="$PROJECT_DIR$/shop/admin/ProductsManagement.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/admin/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/shop/admin/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/admin/product_edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/shop/admin/product_edit.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/admin/user_edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/shop/admin/user_edit.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +77,7 @@
       <workItem from="1600764999186" duration="10536000" />
       <workItem from="1600792127959" duration="6458000" />
       <workItem from="1600843120135" duration="7868000" />
-      <workItem from="1600853737615" duration="2867000" />
+      <workItem from="1600853737615" duration="9610000" />
     </task>
     <servers />
   </component>
@@ -99,10 +100,10 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="377" y="199" width="601" height="403" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1600697103236">
+    <state x="377" y="199" width="619" height="403" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1600858187234">
       <screen x="0" y="27" width="1366" height="741" />
     </state>
-    <state x="377" y="199" width="601" height="403" key="#com.intellij.fileTypes.FileTypeChooser/0.27.1366.741@0.27.1366.741" timestamp="1600697103236" />
+    <state x="377" y="199" width="619" height="403" key="#com.intellij.fileTypes.FileTypeChooser/0.27.1366.741@0.27.1366.741" timestamp="1600858187234" />
     <state x="757" y="146" width="524" height="509" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1600691022687">
       <screen x="0" y="27" width="1366" height="741" />
     </state>
@@ -111,14 +112,14 @@
       <screen x="0" y="27" width="1366" height="741" />
     </state>
     <state x="811" y="117" width="529" height="568" key="NewPhpClassDialog/0.27.1366.741@0.27.1366.741" timestamp="1600772371514" />
-    <state x="478" y="323" width="399" height="156" key="NewPhpFileDialog" timestamp="1600855650105">
+    <state x="478" y="323" width="399" height="156" key="NewPhpFileDialog" timestamp="1600858264606">
       <screen x="0" y="27" width="1366" height="741" />
     </state>
-    <state x="478" y="323" width="399" height="156" key="NewPhpFileDialog/0.27.1366.741@0.27.1366.741" timestamp="1600855650105" />
-    <state x="347" y="174" key="run.anything.popup" timestamp="1600793823579">
+    <state x="478" y="323" width="399" height="156" key="NewPhpFileDialog/0.27.1366.741@0.27.1366.741" timestamp="1600858264606" />
+    <state x="347" y="174" key="run.anything.popup" timestamp="1600862870120">
       <screen x="0" y="27" width="1366" height="741" />
     </state>
-    <state x="347" y="174" key="run.anything.popup/0.27.1366.741@0.27.1366.741" timestamp="1600793823579" />
+    <state x="347" y="174" key="run.anything.popup/0.27.1366.741@0.27.1366.741" timestamp="1600862870120" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

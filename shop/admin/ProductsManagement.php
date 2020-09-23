@@ -3,9 +3,110 @@
 
 class ProductsManagement
 {
+
+    public function update($data, $file, $pdo)
+    {
+        if ($data) {
+            if (empty($data['name']) || empty($data['description']) || empty($data['category_id'])
+                || empty($data['quantity']) || empty($data['price']) || empty($file['image'])) {
+                if (empty($data['name']))
+                    $error['name'] = 'Category name is required';
+
+                if (empty($data['description']))
+                    $error['description'] = 'Description is required';
+
+                if (empty($data['category_id']))
+                    $error['category'] = 'Category is required';
+                elseif (is_numeric($data['category_id']) != 1)
+                    $error['category'] = 'Category_id should be integer value';
+
+                if (empty($data['quantity']))
+                    $error['quantity'] = 'Quantity is required';
+                elseif (is_numeric($data['quantity']) != 1)
+                    $error['quantity'] = 'Quantity should be integer value';
+
+                if (empty($data['price']))
+                    $error['price'] = 'Price is required';
+                elseif (is_numeric($data['price']) != 1)
+                    $error['price'] = 'Price should be integer value';
+
+                if (empty($file['image']))
+                    $error['image'] = 'Image is required';
+
+                return $error;
+
+            } else {//validation success
+
+                if (is_numeric($data['quantity']) != 1) {
+                    $qtyError = 'Quantity should be integer value';
+                }
+                if (is_numeric($data['price']) != 1) {
+                    $priceError = 'Price should be integer value';
+                }
+
+                if (empty($qtyError) && empty($priceError)) {
+                    if ($file['image']['name'] != null) {
+                        $imageTemp = 'product_img/' . ($file['image']['name']);
+                        $imageType = pathinfo($imageTemp, PATHINFO_EXTENSION);
+
+                        if ($imageType != 'jpg' && $imageType != 'jpeg' && $imageType != 'png') {
+                            echo "<script>alert('Image should be jpg,jpeg,png');</script>";
+                        } else { //image validation success
+                            $name = $data['name'];
+                            $desc = $data['description'];
+                            $category = $data['category_id'];
+                            $qty = $data['quantity'];
+                            $price = $data['price'];
+                            $image = $file['image']['name'];
+                            $id = $_GET['id'];
+
+                            move_uploaded_file($file['image']['tmp_name'], $imageTemp);
+
+                            $stmt = $pdo->prepare("UPDATE products SET name=:name,description=:description,category_id=:category,
+                              price=:price,quantity=:quantity,image=:image WHERE id=:id");
+
+                            $result = $stmt->execute(
+                                array(':name' => $name, ':description' => $desc, ':category' => $category, ':price' => $price, ':quantity' => $qty, ':image' => $image, ':id' => $id)
+                            );
+
+                            if ($result) {
+                                echo "<script>alert('Product is updated');window.location.href='index.php';</script>";
+                            }
+                        }
+                    } else {
+                        $name = $data['name'];
+                        $desc = $data['description'];
+                        $category = $data['category_id'];
+                        $qty = $data['quantity'];
+                        $price = $data['price'];
+                        $id = $_GET['id'];
+
+                        $stmt = $pdo->prepare("UPDATE products SET name=:name,description=:description,category_id=:category,
+                              price=:price,quantity=:quantity WHERE id=:id");
+                        $result = $stmt->execute(
+                            array(':name' => $name, ':description' => $desc, ':category' => $category, ':price' => $price, ':quantity' => $qty, ':id' => $id)
+                        );
+                        if ($result) {
+                            echo "<script>alert('Product is updated');window.location.href='index.php';</script>";
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+
+    public function edit($pdo)
+    {
+        $stmt = $pdo->prepare("SELECT * FROM products WHERE id=:id");
+
+        $stmt->execute(array(':id' => $_GET['id']));
+        $product = $stmt->fetch();
+        return $product;
+    }
+
     public function show($data, $pdo)
     {
-
 
         if (!empty($_GET['page_no'])) {
             $page_no = $_GET['page_no'];
@@ -64,12 +165,21 @@ class ProductsManagement
                     $error['name'] = 'name cannot be blank';
                 if (empty($data['description']))
                     $error['description'] = 'description cannot be blank';
-                if (empty($data['price']))
-                    $error['price'] = 'price cannot be blank';
+
                 if (empty($data['quantity']))
-                    $error['quantity'] = 'quantity cannot be blank';
+                    $error['quantity'] = 'Quantity is required';
+                elseif (is_numeric($data['quantity']) != 1)
+                    $error['quantity'] = 'Quantity should be integer value';
+
+                if (empty($data['price']))
+                    $error['price'] = 'Price is required';
+                elseif (is_numeric($data['price']) != 1)
+                    $error['price'] = 'Price should be integer value';
+
                 if (empty($data['category_id']))
                     $error['category'] = 'category cannot be blank';
+                elseif (is_numeric($data['price']) != 1)
+                    $error['category'] = 'category_id should be integer value';
                 if (empty($file['image']['name']))
                     $error['image'] = 'image cannot be blank';
 
@@ -110,7 +220,7 @@ class ProductsManagement
             echo '<script>alert("Successful Delete");
         window.location.href="index.php";
         </script>';
-        }else
+        } else
             echo '<script>alert("Someting Wrong!.Cannot be Delete");
         window.location.href="index.php";
         </script>';

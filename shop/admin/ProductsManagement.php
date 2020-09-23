@@ -8,7 +8,7 @@ class ProductsManagement
     {
         if ($data) {
             if (empty($data['name']) || empty($data['description']) || empty($data['category_id'])
-                || empty($data['quantity']) || empty($data['price']) || empty($file['image'])) {
+                || empty($data['quantity']) || empty($data['price']) ) {
                 if (empty($data['name']))
                     $error['name'] = 'Category name is required';
 
@@ -29,9 +29,6 @@ class ProductsManagement
                     $error['price'] = 'Price is required';
                 elseif (is_numeric($data['price']) != 1)
                     $error['price'] = 'Price should be integer value';
-
-                if (empty($file['image']))
-                    $error['image'] = 'Image is required';
 
                 return $error;
 

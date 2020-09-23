@@ -2,7 +2,7 @@
 include('header.php');
 include('ProductsManagement.php');
 $productManagement = new ProductsManagement();
-$error = $productManagement->update($_POST,$_FILES,$pdo);
+$error = $productManagement->update($_POST, $_FILES, $pdo);
 $product = $productManagement->edit($pdo);
 
 $stmt = $pdo->prepare("SELECT * FROM categories");
@@ -45,10 +45,10 @@ $categories = $stmt->fetchAll();
                 <select name="category_id" name="category_id">
                     <?php
                     foreach ($categories as $category):
-                        if ($_POST['category_id'] === $category['id'] ) {
+                        if ($_POST['category_id'] === $category['id']) {
                             ?>
                             <option value="<?php echo $category['id']; ?>"<?php echo " selected"; ?>><?php echo $category['name']; ?></option>
-                        <?php } elseif ($product['category_id'] === $category['id']&& empty($_POST)) {
+                        <?php } elseif ($product['category_id'] === $category['id'] && empty($_POST)) {
                             ?>
                             <option value="<?php echo $category['id']; ?>"<?php echo " selected"; ?>><?php echo $category['name']; ?></option>
                         <?php } else { ?>
@@ -79,11 +79,11 @@ $categories = $stmt->fetchAll();
             </div>
 
             <div class="form-group">
-
-                <label>Product Image</label>
-                <input type="file" name='image' class="form-control" placeholder="Fill Product's Image"><br>
                 <img src="product_img/<?php echo $product['image']; ?>" width="100" alt="">
-                <small class="text-danger"> * <?php echo isset($error['image']) ? $error['image'] : ''; ?> </small>
+                <br>
+                <label>Product Image</label>
+                <input type="file" name='image' class="form-control" placeholder="Fill Product's Image">
+
 
             </div>
 

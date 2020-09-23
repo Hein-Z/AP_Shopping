@@ -21,6 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b6a7a07d-f885-4821-91d1-f8280b8b0df7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/admin/ProductsManagement.php" beforeDir="false" afterPath="$PROJECT_DIR$/shop/admin/ProductsManagement.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shop/admin/product_edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/shop/admin/product_edit.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -74,7 +75,7 @@
       <workItem from="1600764999186" duration="10536000" />
       <workItem from="1600792127959" duration="6458000" />
       <workItem from="1600843120135" duration="7868000" />
-      <workItem from="1600853737615" duration="11573000" />
+      <workItem from="1600853737615" duration="11905000" />
     </task>
     <servers />
   </component>
@@ -117,10 +118,10 @@
       <screen x="0" y="27" width="1366" height="741" />
     </state>
     <state x="478" y="323" width="399" height="156" key="NewPhpFileDialog/0.27.1366.741@0.27.1366.741" timestamp="1600858264606" />
-    <state x="278" y="133" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1600867255180">
+    <state x="278" y="133" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1600867415071">
       <screen x="0" y="27" width="1366" height="741" />
     </state>
-    <state x="278" y="133" width="800" height="535" key="Vcs.Push.Dialog.v2/0.27.1366.741@0.27.1366.741" timestamp="1600867255180" />
+    <state x="278" y="133" width="800" height="535" key="Vcs.Push.Dialog.v2/0.27.1366.741@0.27.1366.741" timestamp="1600867415071" />
     <state x="347" y="174" key="run.anything.popup" timestamp="1600862870120">
       <screen x="0" y="27" width="1366" height="741" />
     </state>

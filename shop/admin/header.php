@@ -56,7 +56,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="info">
-                        <a href="account_setting.php" class="d-block"><?php echo $_SESSION['user_name']; ?></a>
+                        <a href="account_setting.php" class="d-block">Account's Name : : <?php echo $_SESSION['user_name']; ?></a>
                     </div>
                 </div>
 

@@ -92,7 +92,7 @@ $offset=$result[3];
 
                     </td>
                     <td>
-                        <a href='edit.php?id=<?php echo $product['id'];?>' class="btn btn-primary btn-sm mb-1 w-100">
+                        <a href='product_edit.php?id=<?php echo $product['id'];?>' class="btn btn-primary btn-sm mb-1 w-100">
                             <svg width="1.3em" height="1.3em" viewBox="0 0 16 16" class="bi bi-pencil-square mr-1 mb-1"
                                 fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -100,7 +100,7 @@ $offset=$result[3];
                                 <path fill-rule="evenodd"
                                     d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
                             </svg> Edit</a>
-                        <a href='delete.php?id=<?php echo $product['id']; ?>'
+                        <a href='product_delete.php?id=<?php echo $product['id']; ?>'
                             onclick="return confirm('Are you sure you want to delete this item?');"
                             class="btn btn-outline-warning btn-sm w-100 text-bold"><svg width="1.3em" height="1.3em"
                                 viewBox="0 0 16 16" class="bi bi-trash mr-1 mb-1" fill="currentColor"

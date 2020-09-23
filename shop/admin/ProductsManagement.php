@@ -46,7 +46,7 @@ class ProductsManagement
         return [$total_page, $products, $page_no, $offset];
     }
 
-    public function add($data, $file,$pdo)
+    public function add($data, $file, $pdo)
     {
 
         if (!empty($data)) {
@@ -60,18 +60,18 @@ class ProductsManagement
 
                 if ($imageType != 'png' && $imageType != 'jpg' && $imageType != 'jpeg')
                     $error['image'] = 'Image must be jpg, png or jpeg';
-                if(empty($data['name']))
-                    $error['name']='name cannot be blank';
-                if(empty($data['description']))
-                    $error['description']='description cannot be blank';
-                if(empty($data['price']))
-                    $error['price']='price cannot be blank';
-                if(empty($data['quantity']))
-                    $error['quantity']='quantity cannot be blank';
-                if(empty($data['category_id']))
-                    $error['category']='category cannot be blank';
-                if(empty($file['image']['name']))
-                    $error['image']='image cannot be blank';
+                if (empty($data['name']))
+                    $error['name'] = 'name cannot be blank';
+                if (empty($data['description']))
+                    $error['description'] = 'description cannot be blank';
+                if (empty($data['price']))
+                    $error['price'] = 'price cannot be blank';
+                if (empty($data['quantity']))
+                    $error['quantity'] = 'quantity cannot be blank';
+                if (empty($data['category_id']))
+                    $error['category'] = 'category cannot be blank';
+                if (empty($file['image']['name']))
+                    $error['image'] = 'image cannot be blank';
 
                 return $error;
 
@@ -96,6 +96,25 @@ class ProductsManagement
 
     }
 
+    public function delete($pdo)
+    {
+        $ID = $_GET['id'];
+        $sql = 'DELETE FROM products WHERE id = :id';
+
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindValue(':id', $ID);
+
+        $result = $stmt->execute();
+        if (isset($result)) {
+
+            echo '<script>alert("Successful Delete");
+        window.location.href="index.php";
+        </script>';
+        }else
+            echo '<script>alert("Someting Wrong!.Cannot be Delete");
+        window.location.href="index.php";
+        </script>';
+    }
 
 }
 

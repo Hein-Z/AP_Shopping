@@ -20,12 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b6a7a07d-f885-4821-91d1-f8280b8b0df7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/shop/admin/order_detail.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shop/admin/order_list.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/admin/UserManagement.php" beforeDir="false" afterPath="$PROJECT_DIR$/shop/admin/UserManagement.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/admin/product_add.php" beforeDir="false" afterPath="$PROJECT_DIR$/shop/admin/product_add.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/admin/user_add.php" beforeDir="false" afterPath="$PROJECT_DIR$/shop/admin/user_add.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/admin/user_edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/shop/admin/user_edit.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/admin/user_lists.php" beforeDir="false" afterPath="$PROJECT_DIR$/shop/admin/user_lists.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/admin/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/shop/admin/header.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +76,7 @@
       <workItem from="1600764999186" duration="10536000" />
       <workItem from="1600792127959" duration="6458000" />
       <workItem from="1600843120135" duration="7868000" />
-      <workItem from="1600853737615" duration="13809000" />
+      <workItem from="1600853737615" duration="16135000" />
     </task>
     <servers />
   </component>
@@ -117,10 +115,10 @@
       <screen x="0" y="27" width="1366" height="741" />
     </state>
     <state x="811" y="117" width="529" height="568" key="NewPhpClassDialog/0.27.1366.741@0.27.1366.741" timestamp="1600772371514" />
-    <state x="478" y="323" width="399" height="156" key="NewPhpFileDialog" timestamp="1600858264606">
+    <state x="478" y="323" width="399" height="156" key="NewPhpFileDialog" timestamp="1600870871543">
       <screen x="0" y="27" width="1366" height="741" />
     </state>
-    <state x="478" y="323" width="399" height="156" key="NewPhpFileDialog/0.27.1366.741@0.27.1366.741" timestamp="1600858264606" />
+    <state x="478" y="323" width="399" height="156" key="NewPhpFileDialog/0.27.1366.741@0.27.1366.741" timestamp="1600870871543" />
     <state x="278" y="133" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1600867415071">
       <screen x="0" y="27" width="1366" height="741" />
     </state>

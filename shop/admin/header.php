@@ -3,14 +3,13 @@ session_start();
 require '../config/config.php';
 include '../config/common.php';
 
-if(empty($_SESSION['user_id']) && empty( $_SESSION['logged_in'])){
+if(empty($_SESSION['user_id']) && empty( $_SESSION['logged_in']) && $_SESSION['role']==0)
     header('location:login.php');
-}if($_SESSION['role']==0){
-    header('location:login.php');
-    }
+
     $link=$_SERVER['PHP_SELF'];
     $link_array=explode('/',$link);
     $page=end($link_array);
+
 if (!empty($_POST['search']) || isset($_COOKIE['search']))
     $search_key = isset($_POST['search']) ? $_POST['search'] : $_COOKIE['search'];
 
@@ -93,6 +92,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 </p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="order_list.php" class="nav-link">
+                                <i class="fa fa-list"></i>
+                                <p class='ml-1'> Order Lists
+                                </p>
+                            </a>
+                        </li>
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
@@ -113,18 +119,29 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </ul>
 
             <!-- SEARCH FORM -->
-            <form class="form-inline ml-3" action='' method='post'>
-                <div class="input-group input-group-sm">
-                    <input type="hidden" name='_token' value='<?php echo $_SESSION["_token"];?>'>
-                    <input name="search" class="form-control form-control-navbar" type="search" placeholder="Search">
-
-                    <div class="input-group-append">
-                        <button class="btn btn-navbar" type="submit">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </div>
-                </div>
-            </form>
+            <?php if($page == 'index.php' || $page == 'category.php' || $page == 'user_list.php') {?>
+                <?php if ($page != 'order_list.php') {?>
+                    <form class="form-inline ml-3" method="post"
+                        <?php if($page == 'index.php') :?>
+                            action="index.php"
+                        <?php elseif($page == 'category.php'):?>
+                            action="category.php"
+                        <?php elseif($page == 'user_lists.php'):?>
+                            action="user_lists.php"
+                        <?php endif;?>
+                    >
+                        <input name="_token" type="hidden" value="<?php echo $_SESSION['_token']; ?>">
+                        <div class="input-group input-group-sm">
+                            <input name="search" class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+                            <div class="input-group-append">
+                                <button class="btn btn-navbar" type="submit">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                <?php } ?>
+            <?php } ?>
             <ul>
                <li class="nav-item d-none d-sm-inline-block"><?php echo isset($search_key) ? 'Search result for "'.$search_key.'"':''; ?></li>
             </ul>

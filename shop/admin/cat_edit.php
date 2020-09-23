@@ -3,7 +3,7 @@ include('header.php');
 include('CatManagement.php');
 $catManagement = new CatManagement();
 $catManagement->update($_POST, $pdo);
-$categories =$catManagement->edit($pdo);
+$category =$catManagement->edit($pdo);
 
 ?>
 
@@ -13,14 +13,14 @@ $categories =$catManagement->edit($pdo);
             <input type="hidden" name='_token' value='<?php echo $_SESSION["_token"];?>'>
             <div class="form-group">
                 <label for="exampleInputEmail1">Name</label>
-                <input type="name" name="name" class="form-control" placeholder="Enter Name" value="<?php echo $categories['name']?>">
+                <input type="name" name="name" class="form-control" placeholder="Enter Name" value="<?php echo isset($_POST['name']) ? $_POST['name'] : $category['description']; ?>">
                 <small class="text-danger"> * <?php echo isset($error['name'])?$error['name']:'';?> </small>
 
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Description</label>
 
-                <textarea name="description" class="form-control" cols="30" rows="10"><?php echo $categories['description']?></textarea>
+                <textarea name="description" class="form-control" cols="30" rows="10"><?php echo isset($_POST['description']) ? $_POST['description'] : $category['description']; ?></textarea>
                 <small class="text-danger"> * <?php echo isset($error['description'])?$error['description']:'';?> </small>
             </div>
             <p>* fields are required</p>

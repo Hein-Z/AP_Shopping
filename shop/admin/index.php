@@ -41,11 +41,11 @@ $offset=$result[3];
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
         <br>
-        <a href='add.php' class="btn btn-success"><svg width="2em" height="2em" viewBox="0 0 16 16"
+        <a href='product_add.php' class="btn btn-success"><svg width="2em" height="2em" viewBox="0 0 16 16"
                 class="bi bi-file-plus-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd"
                     d="M12 1H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2zM8.5 6a.5.5 0 0 0-1 0v1.5H6a.5.5 0 0 0 0 1h1.5V10a.5.5 0 0 0 1 0V8.5H10a.5.5 0 0 0 0-1H8.5V6z" />
-            </svg> New Blog Post</a>
+            </svg> New Product</a>
 
 
     </div>
@@ -75,7 +75,7 @@ $offset=$result[3];
                     <?php
                     $stmt = $pdo->prepare("SELECT name FROM categories WHERE id=:id");
                     $stmt->execute(array(':id'=>$product['category_id']));
-                    $category = $stmt->fetchAll();
+                    $category = $stmt->fetch();
                     ?>
                     <td>
                         <?php echo empty($category)?'uncategorized':escape($category[0]); ?>
@@ -151,7 +151,7 @@ $offset=$result[3];
     </div>
     <?php } else{?>
     <h1>
-        <?php if(!empty($_POST['search'])) {echo "There is no post match with '".$_POST['search']."'";}else{ echo "There is no post yet";} ?>
+        <?php if(!empty($_POST['search'])) {echo "There is no product match with '".$_POST['search']."'";}else{ echo "There is no product yet";} ?>
     </h1>
     <?php }?>
 

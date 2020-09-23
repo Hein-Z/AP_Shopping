@@ -170,9 +170,9 @@ if (isset($_POST['search'])) {
         <?php } else { ?>
             <h1>
                 <?php if (!empty($_POST['search'])) {
-                    echo "There is no post match with '" . $_POST['search'] . "'";
+                    echo "There is no user match with '" . $_POST['search'] . "'";
                 } else {
-                    echo "There is no post yet";
+                    echo "There is no user yet";
                 } ?>
             </h1>
         <?php } ?>

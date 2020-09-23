@@ -161,9 +161,9 @@ $offset=$result[3];
         <?php } else { ?>
             <h1>
                 <?php if (!empty($_POST['search'])) {
-                    echo "There is no post match with '" . $_POST['search'] . "'";
+                    echo "There is no category match with '" . $_POST['search'] . "'";
                 } else {
-                    echo "There is no post yet";
+                    echo "There is no category yet";
                 } ?>
             </h1>
         <?php } ?>

@@ -65,7 +65,7 @@ if (!empty($_POST['search']) || isset($_COOKIE['search']))
 					<!-- Collect the nav links, forms, and other content for toggling -->
 					<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
 						<ul class="nav navbar-nav navbar-right">
-							<li class="nav-item"><a href="#" class="cart"><span class="ti-bag"></span></a></li>
+							<li class="nav-item"><a href="logout.php" class="cart text-warning"> <span class="fa fa-sign-out"></span>Logout</a></li>
 							<li class="nav-item">
 								<button class="search"><span class="lnr lnr-magnifier" id="search"></span></button>
 							</li>

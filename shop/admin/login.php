@@ -5,7 +5,7 @@ require '../config/common.php';
 require '../authentication.php';
 
 $authenticate=new Authentication();
-$authenticate->login($_POST,$pdo);
+$error=$authenticate->login($_POST,$pdo);
 ?>
 
 <!DOCTYPE html>
@@ -50,7 +50,7 @@ $authenticate->login($_POST,$pdo);
                             </div>
                         </div>
                     </div>
-                    <div class="input-group mb-3">
+                    <div class="input-group ">
                         <input type="password" name='password' class="form-control" placeholder="Password">
                         <div class="input-group-append">
                             <div class="input-group-text">
@@ -58,26 +58,24 @@ $authenticate->login($_POST,$pdo);
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="text-center">
+                        <small class="text-danger text-center">
+                            <?php
+                            echo isset($error)?$error:'';
+                            ?>
+                        </small>
+                    </div>
+                    <div class="row mt-3">
 
                         <!-- /.col -->
-                        <div class="col-4">
+                        <div class=" col-12">
                             <button type="submit" class="btn btn-primary btn-block">Sign In</button>
                         </div>
                         <!-- /.col -->
                     </div>
                 </form>
 
-                <div class="social-auth-links text-center mb-3">
-                    <p>- OR -</p>
 
-                </div>
-                <!-- /.social-auth-links -->
-
-
-                <p class="mb-0">
-                    <a href="register.html" class="text-center">Register a new membership</a>
-                </p>
             </div>
             <!-- /.login-card-body -->
         </div>

@@ -79,7 +79,7 @@ $categories = $stmt->fetchAll();
             </div>
 
             <div class="form-group">
-                <img src="product_img/<?php echo $product['image']; ?>" width="100" alt="">
+                <img src="product_img/<?php echo escape($product['image']); ?>" width="100" alt="">
                 <br>
                 <label>Product Image</label>
                 <input type="file" name='image' class="form-control" placeholder="Fill Product's Image">

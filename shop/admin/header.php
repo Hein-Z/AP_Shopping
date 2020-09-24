@@ -3,7 +3,7 @@ session_start();
 require '../config/config.php';
 include '../config/common.php';
 
-if(empty($_SESSION['user_id']) && empty( $_SESSION['logged_in']) && $_SESSION['role']==0)
+if(empty($_SESSION['user_id']) && empty( $_SESSION['logged_in']) || $_SESSION['role']==0)
     header('location:login.php');
 
     $link=$_SERVER['PHP_SELF'];

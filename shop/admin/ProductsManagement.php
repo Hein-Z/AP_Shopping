@@ -3,8 +3,14 @@
 
 class ProductsManagement
 {
+    protected $pdo;
 
-    public function update($data, $file, $pdo)
+    function __construct(PDO $pdo)
+    {
+        $this->pdo=$pdo;
+    }
+
+    public function update($data, $file)
     {
         if ($data) {
             if (empty($data['name']) || empty($data['description']) || empty($data['category_id'])
@@ -59,7 +65,7 @@ class ProductsManagement
 
                             move_uploaded_file($file['image']['tmp_name'], $imageTemp);
 
-                            $stmt = $pdo->prepare("UPDATE products SET name=:name,description=:description,category_id=:category,
+                            $stmt = $this->pdo->prepare("UPDATE products SET name=:name,description=:description,category_id=:category,
                               price=:price,quantity=:quantity,image=:image WHERE id=:id");
 
                             $result = $stmt->execute(
@@ -78,7 +84,7 @@ class ProductsManagement
                         $price = $data['price'];
                         $id = $_GET['id'];
 
-                        $stmt = $pdo->prepare("UPDATE products SET name=:name,description=:description,category_id=:category,
+                        $stmt = $this->pdo->prepare("UPDATE products SET name=:name,description=:description,category_id=:category,
                               price=:price,quantity=:quantity WHERE id=:id");
                         $result = $stmt->execute(
                             array(':name' => $name, ':description' => $desc, ':category' => $category, ':price' => $price, ':quantity' => $qty, ':id' => $id)
@@ -93,16 +99,16 @@ class ProductsManagement
         }
     }
 
-    public function edit($pdo)
+    public function edit()
     {
-        $stmt = $pdo->prepare("SELECT * FROM products WHERE id=:id");
+        $stmt = $this->pdo->prepare("SELECT * FROM products WHERE id=:id");
 
         $stmt->execute(array(':id' => $_GET['id']));
         $product = $stmt->fetch();
         return $product;
     }
 
-    public function show($data, $pdo)
+    public function show($data)
     {
 
         if (!empty($_GET['page_no'])) {
@@ -116,25 +122,25 @@ class ProductsManagement
 
         if (empty($data['search']) && !isset($_COOKIE['search'])) {
 
-            $stmt = $pdo->prepare("SELECT * FROM products  ORDER BY id DESC");
+            $stmt = $this->pdo->prepare("SELECT * FROM products  ORDER BY id DESC");
 
             $stmt->execute();
             $raw_result = $stmt->fetchAll();
             $total_page = ceil(count($raw_result) / $num_of_regs);
 
-            $stmt = $pdo->prepare("SELECT * FROM products  ORDER BY id DESC LIMIT $offset, $num_of_regs");
+            $stmt = $this->pdo->prepare("SELECT * FROM products  ORDER BY id DESC LIMIT $offset, $num_of_regs");
 
             $stmt->execute();
             $products = $stmt->fetchAll();
         } else {
             $search_key = isset($data['search']) ? $data['search'] : $_COOKIE['search'];
 
-            $stmt = $pdo->prepare("SELECT * FROM products WHERE name LIKE '%$search_key%'  ORDER BY id DESC");
+            $stmt = $this->pdo->prepare("SELECT * FROM products WHERE name LIKE '%$search_key%'  ORDER BY id DESC");
             $stmt->execute();
             $raw_result = $stmt->fetchAll();
             $total_page = ceil(count($raw_result) / $num_of_regs);
 
-            $stmt = $pdo->prepare("SELECT * FROM products WHERE name LIKE '%$search_key%' ORDER BY id DESC LIMIT $offset, $num_of_regs");
+            $stmt = $this->pdo->prepare("SELECT * FROM products WHERE name LIKE '%$search_key%' ORDER BY id DESC LIMIT $offset, $num_of_regs");
 
             $stmt->execute();
             $products = $stmt->fetchAll();
@@ -144,7 +150,7 @@ class ProductsManagement
         return [$total_page, $products, $page_no, $offset];
     }
 
-    public function add($data, $file, $pdo)
+    public function add($data, $file)
     {
 
         if (!empty($data)) {
@@ -186,8 +192,8 @@ class ProductsManagement
                 move_uploaded_file($file['image']['tmp_name'], $targetFile);
 
                 $sql = "INSERT INTO products(name,description,image,price,quantity,category_id) VALUES(:name,:description,:image,:price,:quantity,:category_id)";
-                $pdo_statement = $pdo->prepare($sql);
-                $result = $pdo_statement->execute(
+                $this->pdo_statement = $this->pdo->prepare($sql);
+                $result = $this->pdo_statement->execute(
                     array(':name' => $data['name'], ':description' => $data['description'], ':image' => $imageName, ':price' => $data['price'],
                         ':quantity' => $data['quantity'], ':category_id' => $data['category_id']));
 
@@ -203,12 +209,12 @@ class ProductsManagement
 
     }
 
-    public function delete($pdo)
+    public function delete()
     {
         $ID = $_GET['id'];
         $sql = 'DELETE FROM products WHERE id = :id';
 
-        $stmt = $pdo->prepare($sql);
+        $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(':id', $ID);
 
         $result = $stmt->execute();

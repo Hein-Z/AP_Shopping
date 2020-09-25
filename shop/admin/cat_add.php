@@ -1,8 +1,8 @@
 <?php
 include('header.php');
 include('CatManagement.php');
-$catManagement = new CatManagement();
-$error=$catManagement->add($_POST, $pdo);
+$catManagement = new CatManagement($pdo);
+$error=$catManagement->add($_POST);
 ?>
     <div class="content-wrapper pl-3">
         <h1>Add Category</h1>

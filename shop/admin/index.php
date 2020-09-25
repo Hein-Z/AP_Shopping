@@ -11,9 +11,9 @@ if(isset($_POST['search'])) {
 
 include('header.php');
 include('ProductsManagement.php');
-$productsManagement = new ProductsManagement();
+$productsManagement = new ProductsManagement($pdo);
 
-$result=$productsManagement->show($_POST,$pdo);
+$result=$productsManagement->show($_POST);
 $total_page=$result[0];
 $products=$result[1];
 $page_no=$result[2];

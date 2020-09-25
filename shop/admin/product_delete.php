@@ -15,5 +15,5 @@ $link_array = explode('/', $link);
 $page = end($link_array);
 
 include('ProductsManagement.php');
-$productsManagement = new ProductsManagement();
-$productsManagement->delete( $pdo);
+$productsManagement = new ProductsManagement($pdo);
+$productsManagement->delete( );

@@ -43,8 +43,8 @@ if (isset($_POST['search'])) {
 
         </div>
         <?php
-        $userManagement = new UserManagement();
-        $result=$userManagement->show($_POST, $pdo);
+        $userManagement = new UserManagement($pdo);
+        $result=$userManagement->show($_POST);
 
         $total_page=$result[0];
         $users=$result[1];

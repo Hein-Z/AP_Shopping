@@ -1,8 +1,8 @@
 <?php
 include('header.php');
 include('ProductsManagement.php');
-$productManagement = new ProductsManagement();
-$error = $productManagement->add($_POST, $_FILES, $pdo);
+$productManagement = new ProductsManagement($pdo);
+$error = $productManagement->add($_POST, $_FILES);
 
 $stmt = $pdo->prepare("SELECT * FROM categories");
 $stmt->execute();

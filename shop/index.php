@@ -9,11 +9,9 @@ if (isset($_POST['search'])) {
     }
 }
 
-$category=isset($_GET['category'])?$_GET['category']:"";
-
-$sql = isset($_GET['category']) ? " WHERE category_id = :category " : '';
 
 include('header.php');
+include('IndexShow.php');
 
 
 if (!empty($_GET['pageno'])) {
@@ -25,33 +23,22 @@ if (!empty($_GET['pageno'])) {
 $numOfrecs = 3;
 $offset = ($pageno - 1) * $numOfrecs;
 
+$select = new IndexShow($pdo,$numOfrecs,$offset);
+
+
 if (empty($_POST['search']) && empty($_COOKIE['search'])) {
 
 
-        $stmt = $pdo->prepare("SELECT * FROM products " . $sql . " ORDER BY id DESC ");
-        $stmt->execute([':category' => $category]);
-        $rawResult = $stmt->fetchAll();
-
-        $total_pages = ceil(count($rawResult) / $numOfrecs);
-
-        $stmt = $pdo->prepare("SELECT * FROM products " . $sql . " ORDER BY id DESC LIMIT $offset,$numOfrecs");
-        $stmt->execute([':category' => $category]);
-        $result = $stmt->fetchAll();
+    $results=$select->selectAll();
+    $total_pages=$results[0];
+    $result=$results[1];
 
 } else {
 
-    $sql.=$sql==''?'WHERE':' AND ';
     $searchKey = isset($_POST['search']) ? $_POST['search'] : $_COOKIE['search'];
-
-    $stmt = $pdo->prepare("SELECT * FROM products " . $sql . " name LIKE '%$searchKey%' ORDER BY id DESC");
-    $stmt->execute([':category' => $category]);
-    $rawResult = $stmt->fetchAll();
-
-    $total_pages = ceil(count($rawResult) / $numOfrecs);
-
-    $stmt = $pdo->prepare("SELECT * FROM products " . $sql . " name LIKE '%$searchKey%' ORDER BY id DESC LIMIT $offset,$numOfrecs");
-    $stmt->execute([':category' => $category]);
-    $result = $stmt->fetchAll();
+    $results=$select->selectSearch($searchKey);
+    $total_pages=$results[0];
+    $result=$results[1];
 }
 
 ?>
@@ -135,15 +122,16 @@ if (empty($_POST['search']) && empty($_COOKIE['search'])) {
                             </div>
                         </div>
                     </div>
-                    <?php
+                <?php
                 endforeach;
-            } if(empty($result)){?>
+            }
+            if (empty($result)) { ?>
                 <div class="col-lg-4 col-md-6">
                     <div class="single-product">
-                    There is no product with this category
+                        There is no product with this category
                     </div>
                 </div>
-<?php }?>
+            <?php } ?>
 
     </section>
     <!-- End Best Seller -->

@@ -1,10 +1,10 @@
 <?php
 include('header.php');
 include('UserManagement.php');
-$userManagement = new UserManagement();
-$error = $userManagement->update($_POST, $pdo);
+$userManagement = new UserManagement($pdo);
+$error = $userManagement->update($_POST);
 
-$user = $userManagement->edit($pdo);
+$user = $userManagement->edit();
 ?>
 
     <div class="content-wrapper pl-3 pb-4">

@@ -15,5 +15,5 @@ $link_array = explode('/', $link);
 $page = end($link_array);
 
 include('UserManagement.php');
-$userManagement = new UserManagement();
-$userManagement->delete( $pdo);
+$userManagement = new UserManagement($pdo);
+$userManagement->delete();

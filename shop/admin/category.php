@@ -11,9 +11,9 @@ if (isset($_POST['search'])) {
 }
 include('header.php');
 include('CatManagement.php');
-$catManagement = new CatManagement();
+$catManagement = new CatManagement($pdo);
 
-$result=$catManagement->show($_POST,$pdo);
+$result=$catManagement->show($_POST);
 $total_page=$result[0];
 $categories=$result[1];
 $page_no=$result[2];

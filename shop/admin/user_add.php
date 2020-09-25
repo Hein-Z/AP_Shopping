@@ -2,8 +2,8 @@
 
 include('header.php');
 include('UserManagement.php');
-$userMangement = new UserManagement();
-$error = $userMangement->add($_POST, $pdo);
+$userMangement = new UserManagement($pdo);
+$error = $userMangement->add($_POST);
 ?>
     <div class="content-wrapper pl-3 pb-4">
         <h1>Add User</h1>

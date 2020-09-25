@@ -15,5 +15,5 @@ $link_array = explode('/', $link);
 $page = end($link_array);
 
 include('CatManagement.php');
-$catManagement = new CatManagement();
-$catManagement->delete( $pdo);
+$catManagement = new CatManagement($pdo);
+$catManagement->delete();

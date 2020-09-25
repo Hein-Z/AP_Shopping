@@ -3,20 +3,28 @@
 
 class UserManagement
 {
-    public function edit($pdo){
-        $stmt = $pdo->prepare("SELECT * FROM users WHERE id=:id");
+
+    protected $pdo;
+
+    function __construct(PDO $pdo)
+    {
+        $this->pdo=$pdo;
+    }
+
+    public function edit(){
+        $stmt = $this->pdo->prepare("SELECT * FROM users WHERE id=:id");
 
         $stmt->execute(array(':id' => $_GET['id']));
         $user = $stmt->fetch();
         return $user;
     }
 
-    public function update($data, $pdo)
+    public function update($data)
     {
 
         if ($data) {
 
-            $stmt = $pdo->prepare("SELECT * FROM users WHERE email=:email and id!=:id");
+            $stmt = $this->pdo->prepare("SELECT * FROM users WHERE email=:email and id!=:id");
             $stmt->execute(array(':email' => $data['email'], ':id' => $_GET['id']));
             $result = $stmt->fetch();
 
@@ -56,7 +64,7 @@ class UserManagement
 
 
             if (!empty($name) && !empty($email) && !empty($phone) && !empty($password) && !empty($address)) {
-                $stmt = $pdo->prepare('UPDATE users SET name=:name, email=:email, address =:address, phone=:phone, password=:password,role=:role WHERE id=:id');
+                $stmt = $this->pdo->prepare('UPDATE users SET name=:name, email=:email, address =:address, phone=:phone, password=:password,role=:role WHERE id=:id');
                 $result = $stmt->execute(array(':name' => $name, ':email' => $email, ':address' => $address, ':phone' => $phone, ':password' => $password,':role'=>$role, ':id' => $_GET['id']));
 
                 if (isset($result)) {
@@ -72,13 +80,13 @@ class UserManagement
 
     }
 
-    public function add($data, $pdo)
+    public function add($data)
     {
 
 
         if ($data) {
 
-            $stmt = $pdo->prepare("SELECT * FROM users WHERE email=:email");
+            $stmt = $this->pdo->prepare("SELECT * FROM users WHERE email=:email");
             $stmt->execute(array(':email' => $data['email']));
             $result = $stmt->fetch();
 
@@ -117,7 +125,7 @@ class UserManagement
 
             if (!empty($name) && !empty($email) && !empty($address) && !empty($phone) && !empty($password)) {
 
-                $stmt = $pdo->prepare('INSERT INTO users(name,email,address,phone,password,role) VALUE (:name,:email,:address,:phone,:password,:role)');
+                $stmt = $this->pdo->prepare('INSERT INTO users(name,email,address,phone,password,role) VALUE (:name,:email,:address,:phone,:password,:role)');
                 $result = $stmt->execute(array(':name' => $name, ':email' => $email, ':address' => $address, ':phone' => $phone, ':password' => $password, ':role' => $role));
                 if ($result) {
                     echo '<script>alert("successfully added");window.location.href="user_lists.php"</script>';
@@ -132,12 +140,12 @@ class UserManagement
 
     }
 
-    public function delete($pdo)
+    public function delete()
     {
         $ID = $_GET['id'];
         $sql = 'DELETE FROM categories WHERE id = :id';
 
-        $stmt = $pdo->prepare($sql);
+        $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(':id', $ID);
 
         $result = $stmt->execute();
@@ -149,7 +157,7 @@ class UserManagement
         }
     }
 
-    public function show($data,$pdo)
+    public function show($data)
     {
 
 
@@ -164,13 +172,13 @@ class UserManagement
 
         if (empty($data['search']) && !isset($_COOKIE['search'])) {
 
-            $stmt = $pdo->prepare("SELECT * FROM users ORDER BY id DESC");
+            $stmt = $this->pdo->prepare("SELECT * FROM users ORDER BY id DESC");
 
             $stmt->execute();
             $raw_result = $stmt->fetchAll();
             $total_page = ceil(count($raw_result) / $num_of_regs);
 
-            $stmt = $pdo->prepare("SELECT * FROM users ORDER BY id DESC LIMIT $offset, $num_of_regs");
+            $stmt = $this->pdo->prepare("SELECT * FROM users ORDER BY id DESC LIMIT $offset, $num_of_regs");
 
             $stmt->execute();
             $users = $stmt->fetchAll();
@@ -179,13 +187,13 @@ class UserManagement
         } else {
             $search_key = isset($data['search']) ? $data['search'] : $_COOKIE['search'];
 
-            $stmt = $pdo->prepare("SELECT * FROM users WHERE name LIKE '%$search_key%'  ORDER BY id DESC");
+            $stmt = $this->pdo->prepare("SELECT * FROM users WHERE name LIKE '%$search_key%'  ORDER BY id DESC");
 
             $stmt->execute();
             $raw_result = $stmt->fetchAll();
             $total_page = ceil(count($raw_result) / $num_of_regs);
 
-            $stmt = $pdo->prepare("SELECT * FROM users WHERE name LIKE '%$search_key%' ORDER BY id DESC LIMIT $offset, $num_of_regs");
+            $stmt = $this->pdo->prepare("SELECT * FROM users WHERE name LIKE '%$search_key%' ORDER BY id DESC LIMIT $offset, $num_of_regs");
 
             $stmt->execute();
             $users = $stmt->fetchAll();

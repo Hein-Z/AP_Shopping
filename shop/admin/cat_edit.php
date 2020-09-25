@@ -1,9 +1,9 @@
 <?php
 include('header.php');
 include('CatManagement.php');
-$catManagement = new CatManagement();
-$catManagement->update($_POST, $pdo);
-$category =$catManagement->edit($pdo);
+$catManagement = new CatManagement($pdo);
+$catManagement->update($_POST);
+$category =$catManagement->edit();
 
 ?>
 

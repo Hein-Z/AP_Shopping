@@ -4,8 +4,8 @@ require 'config/config.php';
 require 'config/common.php';
 require 'authentication.php';
 
-$authenticate=new Authentication();
-$error=$authenticate->register($_POST,$pdo);
+$authenticate=new Authentication($pdo);
+$error=$authenticate->register($_POST);
 ?>
 
 <!DOCTYPE html>

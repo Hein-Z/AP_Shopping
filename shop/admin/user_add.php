@@ -53,7 +53,7 @@ $error = $userMangement->add($_POST);
             <p class="text-primary">* fields are required!</p>
 
             <button type="submit" class="btn btn-primary">Submit</button>
-            <a href="user_lists.php.php" type="button" class="btn btn-outline-warning">Back</a>
+            <a href="user_lists.php" type="button" class="btn btn-outline-warning">Back</a>
         </form>
 
     </div>

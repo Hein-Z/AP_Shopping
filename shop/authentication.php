@@ -3,14 +3,22 @@
 
 class Authentication
 {
-    public function register($data,$pdo){
+
+    protected $pdo;
+
+    function __construct(PDO $pdo)
+    {
+        $this->pdo=$pdo;
+    }
+
+    public function register($data){
         if($data){
             if(!empty($data['password'])&& !empty($data['email'])&&!empty($data['confirm_password'])&& !empty($data['name'])
                 &&!empty($data['address'])&&!empty($data['phone'])){
                 if($data['password']== $data['confirm_password']){
                     $email=$data['email'];
 
-                    $stmt=$pdo->prepare("SELECT * FROM users WHERE email=:email");
+                    $stmt=$this->pdo->prepare("SELECT * FROM users WHERE email=:email");
                     $stmt->bindValue(':email',$email);
                     $stmt->execute();
                     $user=$stmt->fetch(PDO::FETCH_ASSOC);
@@ -23,7 +31,7 @@ class Authentication
                         $password=$data['password'];
                         $phone=$data['phone'];
                         $address=$data['address'];
-                        $stmt=$pdo->prepare('INSERT INTO users(name,email,password,address,phone) VALUE (:name,:email,:password,:address,:phone)');
+                        $stmt=$this->pdo->prepare('INSERT INTO users(name,email,password,address,phone) VALUE (:name,:email,:password,:address,:phone)');
                         $result=$stmt->execute(array(':name'=>$name,':email'=>$email,':password'=>  $password,':address'=>$address,':phone'=>$phone));
 
                         if($result){
@@ -41,7 +49,7 @@ class Authentication
         }
     }
 
-    public function login($data,$pdo){
+    public function login($data){
         if($data){
             $email=$data['email'];
             $password=$data['password'];
@@ -49,7 +57,7 @@ class Authentication
             if (empty($email) || empty($password))
                 return "Please complete form";
 
-            $stmt=$pdo->prepare("SELECT * FROM users WHERE email=:email");
+            $stmt=$this->pdo->prepare("SELECT * FROM users WHERE email=:email");
             $stmt->bindValue(':email',$email);
             $stmt->execute();
             $user=$stmt->fetch(PDO::FETCH_ASSOC);

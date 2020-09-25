@@ -1,5 +1,6 @@
 <?php
 require 'authentication.php';
-$authenticate = new Authentication();
+require 'config/config.php';
+$authenticate = new Authentication($pdo);
 $authenticate->logout();
 ?>

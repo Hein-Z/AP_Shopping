@@ -8,7 +8,19 @@ if (isset($_POST['search'])) {
         setcookie('search', null, -1, '/');
     }
 }
-
+if (isset($_GET['category'])) {
+    setcookie('category', $_GET['category'], time() + (86400 * 30), "/");
+    if ($_GET['category'] == 'all') {
+        unset($_COOKIE['category']);
+        setcookie('category', null, -1, '/');
+        unset($_GET['category']);
+    }
+} else {
+    if (empty($_GET['pageno'])) {
+        unset($_COOKIE['category']);
+        setcookie('category', null, -1, '/');
+    }
+}
 
 include('header.php');
 include('IndexShow.php');
@@ -23,22 +35,38 @@ if (!empty($_GET['pageno'])) {
 $numOfrecs = 3;
 $offset = ($pageno - 1) * $numOfrecs;
 
-$select = new IndexShow($pdo,$numOfrecs,$offset);
+$select = new IndexShow($pdo, $numOfrecs, $offset);
 
 
 if (empty($_POST['search']) && empty($_COOKIE['search'])) {
 
+    if (empty($_GET['category']) && empty($_COOKIE['search'])) {
+        $results = $select->selectAll();
+        $total_pages = $results[0];
+        $result = $results[1];
+    } else {
+        $category = isset($_GET['category']) ? $_GET['category'] : $_COOKIE['category'];
+        $results = $select->selectCat($category);
+        $total_pages = $results[0];
+        $result = $results[1];
+    }
 
-    $results=$select->selectAll();
-    $total_pages=$results[0];
-    $result=$results[1];
 
 } else {
 
     $searchKey = isset($_POST['search']) ? $_POST['search'] : $_COOKIE['search'];
-    $results=$select->selectSearch($searchKey);
-    $total_pages=$results[0];
-    $result=$results[1];
+
+    if (empty($_GET['category']) && empty($_COOKIE['category'])) {
+        $results = $select->selectSearch($searchKey);
+        $total_pages = $results[0];
+        $result = $results[1];
+    } else {
+        $category = isset($_GET['category']) ? $_GET['category'] : $_COOKIE['category'];
+        $results = $select->selectSearchCat($searchKey, $category);
+        $total_pages = $results[0];
+        $result = $results[1];
+    }
+
 }
 
 ?>
@@ -49,7 +77,7 @@ if (empty($_POST['search']) && empty($_COOKIE['search'])) {
             <div class="head">Browse Categories</div>
             <ul class="main-categories">
                 <li class="main-nav-list">
-                    <a href="?pageno=1">All</a>
+                    <a href="?category=all&pageno=1">All</a>
                 </li>
                 <li class="main-nav-list">
                     <?php
@@ -68,7 +96,8 @@ if (empty($_POST['search']) && empty($_COOKIE['search'])) {
     <div class="col-xl-9 col-lg-8 col-md-7">
     <div class="filter-bar d-flex flex-wrap align-items-center">
         <div class="pagination">
-            <a href="?pageno=1" class="active">First</a>
+            <a href="?pageno=1<?php echo isset($category) ? '&category=' . $category : '';
+            ?>" class="active">First</a>
             <a <?php if ($pageno <= 1) {
                 echo 'disabled';
             } ?>
@@ -76,6 +105,7 @@ if (empty($_POST['search']) && empty($_COOKIE['search'])) {
                         echo '#';
                     } else {
                         echo "?pageno=" . ($pageno - 1);
+                        echo isset($category) ? '&category=' . $category : '';
                     } ?>" class="prev-arrow">
                 <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
             </a>
@@ -87,10 +117,13 @@ if (empty($_POST['search']) && empty($_COOKIE['search'])) {
                         echo '#';
                     } else {
                         echo "?pageno=" . ($pageno + 1);
+                        echo isset($category) ? '&category=' . $category : '';
                     } ?>" class="next-arrow">
                 <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
             </a>
-            <a href="?pageno=<?php echo $total_pages ?>" class="active">Last</a>
+            <a href="?pageno=<?php echo $total_pages;
+            echo isset($category) ? '&category=' . $category : '';
+            ?>" class="active">Last</a>
         </div>
     </div>
     <!-- End Filter Bar -->

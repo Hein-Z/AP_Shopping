@@ -62,9 +62,18 @@ if (!empty($_POST['search']) || isset($_COOKIE['search']))
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
+                    <?php
+                    $cart = 0;
+                    if (isset($_SESSION['cart'])) {
+                        foreach ($_SESSION['cart'] as $key => $qty) {
+                            $cart += $qty;
+                        }
+                    }
+                    ?>
 					<!-- Collect the nav links, forms, and other content for toggling -->
 					<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
 						<ul class="nav navbar-nav navbar-right">
+                            <li class="nav-item"><a href="cart.php" class="cart"><span class="ti-bag"><?php echo $cart?></span></a></li>
                             <li class="nav-item"><a href="logout.php" class="cart text-warning"> <span class="fa fa-sign-out"></span>Logout</a></li>
                             <li class="nav-item text-primary  my-auto"><?php echo isset($search_key)?"Search result for '$search_key'":''; ?></li>
                             <li class="nav-item">

@@ -16,13 +16,13 @@ class IndexShow
 
     public function selectAll()
     {
-        $stmt = $this->pdo->prepare("SELECT * FROM products ");
+        $stmt = $this->pdo->prepare("SELECT * FROM products WHERE quantity > 0");
         $stmt->execute();
         $rawResult = $stmt->fetchAll();
 
         $total_pages = ceil(count($rawResult) / $this->numOfrecs);
 
-        $stmt = $this->pdo->prepare("SELECT * FROM products ORDER BY id DESC LIMIT $this->offset,$this->numOfrecs");
+        $stmt = $this->pdo->prepare("SELECT * FROM products WHERE quantity > 0 ORDER BY id DESC LIMIT $this->offset,$this->numOfrecs");
         $stmt->execute();
         $result = $stmt->fetchAll();
 
@@ -31,13 +31,13 @@ class IndexShow
 
     public function selectCat($category)
     {
-        $stmt = $this->pdo->prepare("SELECT * FROM products WHERE category_id=:category");
+        $stmt = $this->pdo->prepare("SELECT * FROM products WHERE category_id=:category AND quantity > 0");
         $stmt->execute([':category' => $category]);
         $rawResult = $stmt->fetchAll();
 
         $total_pages = ceil(count($rawResult) / $this->numOfrecs);
 
-        $stmt = $this->pdo->prepare("SELECT * FROM products WHERE category_id=:category ORDER BY id DESC LIMIT $this->offset,$this->numOfrecs");
+        $stmt = $this->pdo->prepare("SELECT * FROM products WHERE category_id=:category AND quantity > 0 ORDER BY id DESC LIMIT $this->offset,$this->numOfrecs");
         $stmt->execute([':category' => $category]);
         $result = $stmt->fetchAll();
 
@@ -47,13 +47,13 @@ class IndexShow
     public function selectSearch($searchKey)
     {
 
-        $stmt = $this->pdo->prepare("SELECT * FROM products WHERE name LIKE '%$searchKey%'");
+        $stmt = $this->pdo->prepare("SELECT * FROM products WHERE name LIKE '%$searchKey%' AND quantity > 0");
         $stmt->execute();
         $rawResult = $stmt->fetchAll();
 
         $total_pages = ceil(count($rawResult) / $this->numOfrecs);
 
-        $stmt = $this->pdo->prepare("SELECT * FROM products WHERE name LIKE '%$searchKey%' ORDER BY id DESC LIMIT $this->offset,$this->numOfrecs");
+        $stmt = $this->pdo->prepare("SELECT * FROM products WHERE name LIKE '%$searchKey%' AND quantity > 0 ORDER BY id DESC LIMIT $this->offset,$this->numOfrecs");
         $stmt->execute();
         $result = $stmt->fetchAll();
         return [$total_pages, $result];
@@ -61,13 +61,13 @@ class IndexShow
 
     public function selectSearchCat($searchKey, $category)
     {
-        $stmt = $this->pdo->prepare("SELECT * FROM products WHERE category_id=:category AND name LIKE '%$searchKey%'");
+        $stmt = $this->pdo->prepare("SELECT * FROM products WHERE category_id=:category AND name LIKE '%$searchKey%' AND quantity > 0");
         $stmt->execute([':category' => $category]);
         $rawResult = $stmt->fetchAll();
 
         $total_pages = ceil(count($rawResult) / $this->numOfrecs);
 
-        $stmt = $this->pdo->prepare("SELECT * FROM products WHERE category_id=:category AND name LIKE '%$searchKey%' ORDER BY id DESC LIMIT $this->offset,$this->numOfrecs");
+        $stmt = $this->pdo->prepare("SELECT * FROM products WHERE category_id=:category AND name LIKE '%$searchKey%' AND quantity > 0 ORDER BY id DESC LIMIT $this->offset,$this->numOfrecs");
         $stmt->execute([':category' => $category]);
         $result = $stmt->fetchAll();
         return [$total_pages, $result];

@@ -20,10 +20,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b6a7a07d-f885-4821-91d1-f8280b8b0df7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/shop/admin/order_detail.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shop/admin/order_list.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shop/addtocart.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shop/cart.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shop/cart_item_clear.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shop/clearall.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shop/sale_order.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/admin/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/shop/admin/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/IndexShow.php" beforeDir="false" afterPath="$PROJECT_DIR$/shop/IndexShow.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/cart.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/shop/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/shop/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/product_detail.php" beforeDir="false" afterPath="$PROJECT_DIR$/shop/product_detail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/single-product.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +84,12 @@
       <workItem from="1600764999186" duration="10536000" />
       <workItem from="1600792127959" duration="6458000" />
       <workItem from="1600843120135" duration="7868000" />
-      <workItem from="1600853737615" duration="16135000" />
+      <workItem from="1600853737615" duration="17383000" />
+      <workItem from="1600967549280" duration="16275000" />
+      <workItem from="1600983863476" duration="104000" />
+      <workItem from="1601026063790" duration="8143000" />
+      <workItem from="1601042766245" duration="810000" />
+      <workItem from="1601115637045" duration="4069000" />
     </task>
     <servers />
   </component>
@@ -111,10 +124,14 @@
       <screen x="0" y="27" width="1366" height="741" />
     </state>
     <state x="127" y="90" width="1092" height="629" key="DiffContextDialog/0.27.1366.741@0.27.1366.741" timestamp="1600867239553" />
-    <state x="811" y="117" width="529" height="568" key="NewPhpClassDialog" timestamp="1600772371514">
+    <state x="466" y="155" width="424" height="491" key="FileChooserDialogImpl" timestamp="1601118075658">
       <screen x="0" y="27" width="1366" height="741" />
     </state>
-    <state x="811" y="117" width="529" height="568" key="NewPhpClassDialog/0.27.1366.741@0.27.1366.741" timestamp="1600772371514" />
+    <state x="466" y="155" width="424" height="491" key="FileChooserDialogImpl/0.27.1366.741@0.27.1366.741" timestamp="1601118075658" />
+    <state x="811" y="117" width="529" height="568" key="NewPhpClassDialog" timestamp="1601026295715">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="811" y="117" width="529" height="568" key="NewPhpClassDialog/0.27.1366.741@0.27.1366.741" timestamp="1601026295715" />
     <state x="478" y="323" width="399" height="156" key="NewPhpFileDialog" timestamp="1600870871543">
       <screen x="0" y="27" width="1366" height="741" />
     </state>
@@ -123,17 +140,17 @@
       <screen x="0" y="27" width="1366" height="741" />
     </state>
     <state x="278" y="133" width="800" height="535" key="Vcs.Push.Dialog.v2/0.27.1366.741@0.27.1366.741" timestamp="1600867415071" />
-    <state x="347" y="174" key="run.anything.popup" timestamp="1600862870120">
+    <state x="347" y="174" key="run.anything.popup" timestamp="1600968790471">
       <screen x="0" y="27" width="1366" height="741" />
     </state>
-    <state x="347" y="174" key="run.anything.popup/0.27.1366.741@0.27.1366.741" timestamp="1600862870120" />
+    <state x="347" y="174" key="run.anything.popup/0.27.1366.741@0.27.1366.741" timestamp="1600968790471" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="php-line-method">
           <url>file://$PROJECT_DIR$/shop/authentication.php</url>
-          <line>5</line>
+          <line>51</line>
           <properties>
             <option name="className" value="\authentication" />
             <option name="methodName" value="login" />
